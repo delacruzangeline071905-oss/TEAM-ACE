@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Team ACE</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #0d6efd !important;
+        }
+
+        /* HERO BANNER */
+
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.3), rgba(108, 117, 125, 0.2)), url("img/baner.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .hero-overlay {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 60px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .hero .lead {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn-primary {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .hero .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+        }
+
+        /* MOBILE HERO */
+
+        @media (max-width:768px) {
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero-overlay {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .lead {
+                font-size: 1.2rem;
+            }
+
+        }
+
+        /* SECTION STYLING */
+
+        section {
+            padding: 80px 0;
+        }
+
+        section h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0d6efd, #6c757d);
+            border-radius: 2px;
+        }
+
+        /* PROJECT CARD */
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card .card-body {
+            padding: 25px;
+        }
+
+        .project-card .card-title {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .project-card .btn-primary {
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 600;
+            border: none;
+            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            transition: all 0.3s ease;
+        }
+
+        .project-card .btn-primary:hover {
+            background: linear-gradient(135deg, #0056b3, #0d6efd);
+            transform: scale(1.05);
+        }
+
+        .project-card .collapse p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(13, 110, 253, 0.85);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 2;
+        }
+
+        .project-card:hover .play-overlay {
+            background: rgba(13, 110, 253, 1);
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 0 25px rgba(13, 110, 253, 0.8);
+        }
+
+        /* TEAM SECTION */
+
+        #contact {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .team-member {
+            padding: 30px;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid #0d6efd;
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover img {
+            transform: rotate(5deg);
+            border-color: #0056b3;
+        }
+
+        .team-member h5 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .team-member .role {
+            color: #0d6efd;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .team-member .email {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .team-member .email i {
+            margin-right: 5px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0d6efd, #6c757d, #0d6efd);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        footer .social-icons {
+            margin-top: 20px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        footer .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            color: #0d6efd;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* SCROLL TO TOP BUTTON */
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0d6efd, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-rocket-takeoff-fill me-2"></i>Team ACE
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home"><i class="bi bi-house-door me-1"></i>Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#activities"><i class="bi bi-activity me-1"></i>Activities</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="bi bi-person-circle me-1"></i>About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope me-1"></i>Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <section id="home" class="hero">
+
+        <div class="position-absolute top-0 start-0 m-4">
+            <img src="img/logo.jpeg" alt="Team Ace Logo"
+                style="width: 120px; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+        </div>
+
+        <div class="hero-overlay">
+
+            <h1 class="display-4">Team Ace</h1>
+
+            <p class="lead">A dedicated team of Computer Science students passionate about creating innovative solutions
+                and building cutting-edge technology. We collaborate to turn ideas into reality through teamwork and
+                creativity.</p>
+
+            <a href="#activities" class="btn btn-primary mt-3">
+                <i class="bi bi-arrow-down-circle me-2"></i>View Our Activities
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ACTIVITIES SECTION -->
+
+    <section id="activities" class="container">
+
+        <div class="text-center">
+            <h2>Our Activities</h2>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- ACTIVITY 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card project-card h-100 shadow-sm" style="cursor: pointer;" data-bs-toggle="modal"
+                    data-bs-target="#modal1">
+                    <img src="img/logo.jpeg" class="card-img-top" alt="Team Logo Design">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-palette-fill me-2 text-primary"></i>Team Logo Design</h5>
+                        <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>January 15, 2026</p>
+                        <button class="btn btn-outline-primary mt-auto w-100">
+                            <i class="bi bi-arrows-fullscreen me-2"></i>View Full Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITY 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card project-card h-100 shadow-sm" style="cursor: pointer;" data-bs-toggle="modal"
+                    data-bs-target="#modal2">
+                    <img src="img/poster.jpeg" class="card-img-top" alt="Project Poster Creation">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-file-earmark-image-fill me-2 text-primary"></i>Poster
+                            Project</h5>
+                        <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>February 20, 2026</p>
+                        <button class="btn btn-outline-primary mt-auto w-100">
+                            <i class="bi bi-arrows-fullscreen me-2"></i>View Full Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITY 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card project-card h-100 shadow-sm" style="cursor: pointer;" data-bs-toggle="modal"
+                    data-bs-target="#modal3">
+                    <img src="img/baner.jpg" class="card-img-top" alt="Team Banner Development">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-flag-fill me-2 text-primary"></i>Team Banner</h5>
+                        <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>March 10, 2026</p>
+                        <button class="btn btn-outline-primary mt-auto w-100">
+                            <i class="bi bi-arrows-fullscreen me-2"></i>View Full Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIVITY 4 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card project-card h-100 shadow-sm" style="cursor: pointer;" data-bs-toggle="modal"
+                    data-bs-target="#modal4">
+                    <div class="position-relative overflow-hidden">
+                        <img src="https://img.youtube.com/vi/3BU6zbPZdIc/hqdefault.jpg" class="card-img-top" alt="Last Scene Thriller Movie">
+                        <div class="play-overlay">
+                            <i class="bi bi-play-fill fs-2"></i>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="bi bi-film me-2 text-primary"></i>Last Scene</h5>
+                        <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>May 21, 2026</p>
+                        <button class="btn btn-outline-primary mt-auto w-100">
+                            <i class="bi bi-play-circle me-2"></i>Watch Video
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+            <!-- ABOUT SECTION -->
+
+            <section id="about" class="container">
+
+                <div class="text-center">
+                    <h2>About Our Team</h2>
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- MEMBER 1 -->
+
+                    <div class="col-md-4 col-lg-3">
+
+                        <div class="team-member text-center">
+
+                            <img src="img/ameirose.jpeg" class="rounded-circle img-fluid mb-3"
+                                alt="Amie Rose Sabenorio">
+
+                            <h5>Amie Rose Sabenorio</h5>
+
+                            <p class="role"><i class="bi bi-code-slash me-2"></i>Developer</p>
+
+                            <p class="small text-muted mb-2">Skills: HTML, CSS, JavaScript, Python</p>
+
+                            <p class="fst-italic small text-primary">"Code with passion, debug with patience"</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MEMBER 2 -->
+
+                    <div class="col-md-4 col-lg-3">
+
+                        <div class="team-member text-center">
+
+                            <img src="img/chenie.jpeg" class="rounded-circle img-fluid mb-3" alt="Chenie Macabacyao">
+
+                            <h5>Chenie Macabacyao</h5>
+
+                            <p class="role"><i class="bi bi-palette me-2"></i>UI Designer</p>
+
+                            <p class="small text-muted mb-2">Skills: Figma, Adobe XD, Bootstrap, CSS</p>
+
+                            <p class="fst-italic small text-primary">"Design is intelligence made visible"</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MEMBER 3 -->
+
+                    <div class="col-md-4 col-lg-3">
+
+                        <div class="team-member text-center">
+
+                            <img src="img/edmar.jpeg" class="rounded-circle img-fluid mb-3" alt="Edmar Xavier Escoton">
+
+                            <h5>Edmar Xavier Escoton</h5>
+
+                            <p class="role"><i class="bi bi-diagram-3 me-2"></i>System Analyst</p>
+
+                            <p class="small text-muted mb-2">Skills: UML, Database Design, Requirements Analysis</p>
+
+                            <p class="fst-italic small text-primary">"Analyze today, innovate tomorrow"</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MEMBER 4 -->
+
+                    <div class="col-md-4 col-lg-3">
+
+                        <div class="team-member text-center">
+
+                            <img src="img/angelica.jpg" class="rounded-circle img-fluid mb-3" alt="Angelica Arrogante">
+
+                            <h5>Angelica Arrogante</h5>
+
+                            <p class="role"><i class="bi bi-laptop me-2"></i>Full Stack Developer New Member</p>
+
+                            <p class="small text-muted mb-2">Skills: React, Node.js, MongoDB, Express</p>
+
+                            <p class="fst-italic small text-primary">"Build solutions that matter"</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- MEMBER 5 -->
+
+                    <div class="col-md-4 col-lg-3 offset-lg-3">
+
+                        <div class="team-member text-center">
+
+                            <img src="img/jinky.jpg" class="rounded-circle img-fluid mb-3" alt="Jinky Bohol">
+
+                            <h5>Jinky Bohol</h5>
+
+                            <p class="role"><i class="bi bi-brush me-2"></i>UI/UX Designer New Member</p>
+
+                            <p class="small text-muted mb-2">Skills: User Research, Prototyping, Wireframing</p>
+
+                            <p class="fst-italic small text-primary">"User experience is everything"</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- CONTACT SECTION -->
+
+            <section id="contact">
+
+                <div class="container">
+
+                    <div class="text-center">
+                        <h2>Contact Us</h2>
+                    </div>
+
+                    <div class="row g-4">
+
+                        <!-- MEMBER 1 -->
+
+                        <div class="col-md-4">
+
+                            <div class="team-member text-center">
+
+                                <img src="img/ameirose.jpeg" class="rounded-circle img-fluid mb-3"
+                                    alt="Amie Rose Sabenorio">
+
+                                <h5>Amie Rose Sabenorio</h5>
+
+                                <p class="role"><i class="bi bi-code-slash me-2"></i>Developer</p>
+
+                                <p class="email"><i class="bi bi-envelope-fill me-2"></i>sabenorio@gmail.com</p>
+
+                                <p class="phone"><i class="bi bi-telephone-fill me-2"></i>+63 912 345 6789</p>
+
+                                <div class="mt-3">
+                                    <iframe src="https://www.google.com/maps?q=Naval+Biliran&output=embed" width="100%"
+                                        height="200" style="border:0; border-radius: 10px;" loading="lazy">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- MEMBER 2 -->
+
+                        <div class="col-md-4">
+
+                            <div class="team-member text-center">
+
+                                <img src="img/chenie.jpeg" class="rounded-circle img-fluid mb-3"
+                                    alt="Chenie Macabacyao">
+
+                                <h5>Chenie Macabacyao</h5>
+
+                                <p class="role"><i class="bi bi-palette me-2"></i>UI Designer</p>
+
+                                <p class="email"><i class="bi bi-envelope-fill me-2"></i>macabacyao@gmail.com</p>
+
+                                <p class="phone"><i class="bi bi-telephone-fill me-2"></i>+63 923 456 7890</p>
+
+                                <div class="mt-3">
+                                    <iframe src="https://www.google.com/maps?q=Caibiran+Biliran&output=embed"
+                                        width="100%" height="200" style="border:0; border-radius: 10px;" loading="lazy">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- MEMBER 3 -->
+
+                        <div class="col-md-4">
+
+                            <div class="team-member text-center">
+
+                                <img src="img/edmar.jpeg" class="rounded-circle img-fluid mb-3"
+                                    alt="Edmar Xavier Escoton">
+
+                                <h5>Edmar Xavier Escoton</h5>
+
+                                <p class="role"><i class="bi bi-diagram-3 me-2"></i>System Analyst</p>
+
+                                <p class="email"><i class="bi bi-envelope-fill me-2"></i>edmar@gmail.com</p>
+
+                                <p class="phone"><i class="bi bi-telephone-fill me-2"></i>+63 934 567 8901</p>
+
+                                <div class="mt-3">
+                                    <iframe src="https://www.google.com/maps?q=Biliran+Biliran&output=embed"
+                                        width="100%" height="200" style="border:0; border-radius: 10px;" loading="lazy">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- MEMBER 4 -->
+
+                        <div class="col-md-4">
+
+                            <div class="team-member text-center">
+
+                                <img src="img/angelica.jpg" class="rounded-circle img-fluid mb-3"
+                                    alt="Angelica Arrogante">
+
+                                <h5>Angelica Arrogante</h5>
+
+                                <p class="role"><i class="bi bi-laptop me-2"></i>Full Stack Developer</p>
+
+                                <p class="email"><i class="bi bi-envelope-fill me-2"></i>angelica@gmail.com</p>
+
+                                <p class="phone"><i class="bi bi-telephone-fill me-2"></i>+63 945 678 9012</p>
+
+                                <div class="mt-3">
+                                    <iframe src="https://www.google.com/maps?q=Naval+Biliran&output=embed" width="100%"
+                                        height="200" style="border:0; border-radius: 10px;" loading="lazy">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- MEMBER 5 -->
+
+                        <div class="col-md-4">
+
+                            <div class="team-member text-center">
+
+                                <img src="img/jinky.jpg" class="rounded-circle img-fluid mb-3" alt="Jinky Bohol">
+
+                                <h5>Jinky Bohol</h5>
+
+                                <p class="role"><i class="bi bi-brush me-2"></i>UI/UX Designer</p>
+
+                                <p class="email"><i class="bi bi-envelope-fill me-2"></i>jinky@gmail.com</p>
+
+                                <p class="phone"><i class="bi bi-telephone-fill me-2"></i>+63 956 789 0123</p>
+
+                                <div class="mt-3">
+                                    <iframe src="https://www.google.com/maps?q=Calumpang+Biliran&output=embed"
+                                        width="100%" height="200" style="border:0; border-radius: 10px;" loading="lazy">
+                                    </iframe>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <h5>Team Ace</h5>
+                            <p>A dedicated team of Computer Science students passionate about creating innovative
+                                solutions.</p>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <h5>Quick Links</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                                <li><a href="#activities" class="text-white text-decoration-none">Activities</a></li>
+                                <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                                <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <h5>Contact Us</h5>
+                            <p><i class="bi bi-envelope-fill me-2"></i>teamace@bipsu.edu.ph</p>
+                            <p><i class="bi bi-telephone-fill me-2"></i>+63 912 345 6789</p>
+                            <p><i class="bi bi-geo-alt-fill me-2"></i>BIPSU Naval, Biliran</p>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="mb-0">© 2026 Team Ace | All Rights Reserved</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="social-icons">
+                                <a href="#"><i class="bi bi-facebook"></i></a>
+                                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#"><i class="bi bi-instagram"></i></a>
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </footer>
+
+            <!-- SCROLL TO TOP BUTTON -->
+
+            <button class="scroll-top" id="scrollTopBtn">
+                <i class="bi bi-arrow-up"></i>
+            </button>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+            <script>
+                // Scroll to top button functionality
+                const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        scrollTopBtn.classList.add('show');
+                    } else {
+                        scrollTopBtn.classList.remove('show');
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+
+
+            </script>
+
+            <!-- MODALS -->
+
+            <!-- Modal 1 -->
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0 bg-light">
+                            <h5 class="modal-title fw-bold" id="modal1Label"><i
+                                    class="bi bi-palette-fill me-2 text-primary"></i>Team Logo Design</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0">
+                            <img src="img/logo.jpeg" class="img-fluid w-100" alt="Team Logo Design">
+                            <div class="p-4 bg-white rounded-bottom">
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>January 15, 2026
+                                </p>
+                                <p class="lead mb-0">Our team collaborated to create a unique logo that represents our
+                                    identity and vision. The design reflects our values of creativity, innovation, and
+                                    teamwork.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 2 -->
+            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0 bg-light">
+                            <h5 class="modal-title fw-bold" id="modal2Label"><i
+                                    class="bi bi-file-earmark-image-fill me-2 text-primary"></i>Poster Project</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0">
+                            <img src="img/poster.jpeg" class="img-fluid w-100" alt="Project Poster Creation">
+                            <div class="p-4 bg-white rounded-bottom">
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>February 20, 2026
+                                </p>
+                                <p class="lead mb-0">We designed and created a comprehensive poster to showcase our
+                                    work. It highlights our project goals, methods, and accomplishments with strong
+                                    visual storytelling.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 3 -->
+            <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="modal3Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0 bg-light">
+                            <h5 class="modal-title fw-bold" id="modal3Label"><i
+                                    class="bi bi-flag-fill me-2 text-primary"></i>Team Banner</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0">
+                            <img src="img/baner.jpg" class="img-fluid w-100" alt="Team Banner Development">
+                            <div class="p-4 bg-white rounded-bottom">
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>March 10, 2026</p>
+                                <p class="lead mb-0">We created a banner that showcases our group spirit, goals, and
+                                    shared mission. The final design captures our identity and supports our team
+                                    presentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 4 -->
+            <div class="modal fade" id="modal4" tabindex="-1" aria-labelledby="modal4Label" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0 bg-light">
+                            <h5 class="modal-title fw-bold" id="modal4Label"><i
+                                    class="bi bi-film me-2 text-primary"></i>Last Scene</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0">
+                            <div class="ratio ratio-16x9">
+                                <iframe id="teamVideo" class="w-100 h-100"
+                                    src="https://www.youtube-nocookie.com/embed/3BU6zbPZdIc?enablejsapi=1"
+                                    title="Last Scene" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="p-4 bg-white rounded-bottom">
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar3 me-1"></i>May 21, 2026</p>
+                                <p class="lead mb-0">“Last Scene” is a psychological thriller centered on a group of
+                                    students uncovering secrets behind a classmate’s mysterious death. The project
+                                    explores suspense, teamwork, and the power of truth.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Reload iframe when modal is closed to stop YouTube video
+                const modal4 = document.getElementById('modal4');
+                if (modal4) {
+                    modal4.addEventListener('hidden.bs.modal', function () {
+                        const iframe = document.getElementById('teamVideo');
+                        if (iframe) {
+                            const videoUrl = iframe.src;
+                            iframe.src = videoUrl;
+                        }
+                    });
+                }
+            </script>
+
+</body>
+
+</html>
